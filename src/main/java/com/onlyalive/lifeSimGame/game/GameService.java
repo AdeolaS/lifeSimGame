@@ -1,11 +1,9 @@
 package com.onlyalive.lifeSimGame.game;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 import com.onlyalive.lifeSimGame.actor.ActorRepository;
-import com.onlyalive.lifeSimGame.actor.properties.FirstName;
-import com.onlyalive.lifeSimGame.actor.properties.FirstNameRepository;
+import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import com.onlyalive.lifeSimGame.simulation.SimulationService;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,6 @@ public class GameService {
     public Game createGame(String firstName, String lastName, Gender gender) {
         
         if (firstName == null) {
-            //firstName = "John";
             firstName = firstNameRepository.findRandomName().getName();
         }
         if (lastName == null) {

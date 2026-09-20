@@ -1,4 +1,4 @@
-package com.onlyalive.lifeSimGame.actor.properties;
+package com.onlyalive.lifeSimGame.actor.properties.name;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

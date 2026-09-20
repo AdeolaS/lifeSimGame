@@ -1,4 +1,4 @@
-package com.onlyalive.lifeSimGame.actor.properties;
+package com.onlyalive.lifeSimGame.actor.properties.name;
 
 import jakarta.persistence.*;
 import lombok.Getter;
