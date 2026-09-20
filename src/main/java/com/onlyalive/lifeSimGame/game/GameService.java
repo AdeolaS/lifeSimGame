@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import com.onlyalive.lifeSimGame.actor.ActorRepository;
+import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import org.springframework.stereotype.Service;
 
 import com.onlyalive.lifeSimGame.actor.Actor;
@@ -17,7 +18,7 @@ public class GameService {
     private final GameRepository gameRepository;
     private final ActorRepository actorRepository;
     
-    public Game createGame(String firstName, String lastName) {
+    public Game createGame(String firstName, String lastName, Gender gender) {
         
         if (firstName == null) {
             firstName = "John";
@@ -25,8 +26,11 @@ public class GameService {
         if (lastName == null) {
             lastName = "Smith";
         }
+        if (gender == null) {
+            gender = Gender.MALE;
+        }
 
-        Actor player = new Actor(firstName, lastName);
+        Actor player = new Actor(firstName, lastName, gender);
         actorRepository.save(player);
 
         Game game = new Game(LocalDate.now(), player);
@@ -34,7 +38,7 @@ public class GameService {
 
     }
 
-    public Game advanceMonth(Long gameId) {
+    public Game ageUp(Long gameId) {
 
         Game game = gameRepository.findById(gameId)
                 .orElseThrow(() -> new RuntimeException("Game not found"));

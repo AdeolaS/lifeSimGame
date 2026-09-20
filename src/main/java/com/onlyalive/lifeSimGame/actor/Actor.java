@@ -1,5 +1,6 @@
 package com.onlyalive.lifeSimGame.actor;
 
+import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,10 +26,13 @@ public class Actor {
 
     private int ageInMonths = 0;
 
+    private Gender gender;
+
     private boolean isAlive = true;
 
-    public Actor(String firstName, String lastName) {
+    public Actor(String firstName, String lastName, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
     }
 }
