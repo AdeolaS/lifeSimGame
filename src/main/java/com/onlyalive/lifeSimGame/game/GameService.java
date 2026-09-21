@@ -46,8 +46,12 @@ public class GameService {
         actorRepository.save(mother);
         actorRepository.save(father);
 
-        relationshipService.createRelationship(player, mother, RelationshipStatus.MOTHER);
-        relationshipService.createRelationship(player, father, RelationshipStatus.FATHER);
+        Random random = new Random();
+
+        relationshipService.createRelationship(
+                player, mother, RelationshipStatus.MOTHER, (random.nextInt(60)+40));
+        relationshipService.createRelationship(
+                player, father, RelationshipStatus.FATHER, (random.nextInt(60)+40));
 
         relationshipService.generateParentRelationship(mother, father);
 

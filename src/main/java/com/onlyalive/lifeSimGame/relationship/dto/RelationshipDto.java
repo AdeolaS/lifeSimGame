@@ -6,6 +6,7 @@ import com.onlyalive.lifeSimGame.relationship.RelationshipStatus;
 public record RelationshipDto(
         Long relationshipId,
         RelationshipStatus relationshipStatus,
+        int relationshipRating,
         ActorSummaryDto relatedActor
 ) {
 }
