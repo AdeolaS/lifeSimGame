@@ -1,6 +1,7 @@
 package com.onlyalive.lifeSimGame.actor;
 
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
+import com.onlyalive.lifeSimGame.relationship.Relationship;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter 
 @Setter 
@@ -31,6 +33,8 @@ public class Actor {
     private Gender gender;
 
     private boolean isAlive = true;
+
+    private List<Relationship> relationships;
 
     public Actor(String firstName, String lastName, Gender gender) {
         this.firstName = firstName;
