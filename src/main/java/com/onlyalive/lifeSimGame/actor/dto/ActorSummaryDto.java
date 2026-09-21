@@ -4,7 +4,7 @@ import com.onlyalive.lifeSimGame.actor.properties.Gender;
 
 
 public record ActorSummaryDto(
-        Long id,
+        Long actorId,
         String firstName,
         String lastName,
         int ageInMonths,

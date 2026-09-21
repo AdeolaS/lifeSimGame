@@ -18,7 +18,7 @@ public class RelationshipMapper {
 
         ActorSummaryDto relatedActorDto =
                 new ActorSummaryDto(
-                        relatedActor.getId(),
+                        relatedActor.getActorId(),
                         relatedActor.getFirstName(),
                         relatedActor.getLastName(),
                         relatedActor.getAgeInMonths(),
@@ -27,7 +27,7 @@ public class RelationshipMapper {
                 );
 
         return new RelationshipDto(
-                relationship.getId(),
+                relationship.getRelationshipId(),
                 relationship.getRelationshipType(),
                 relatedActorDto
         );

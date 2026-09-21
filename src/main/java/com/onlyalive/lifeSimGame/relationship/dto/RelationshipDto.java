@@ -4,7 +4,7 @@ import com.onlyalive.lifeSimGame.actor.dto.ActorSummaryDto;
 import com.onlyalive.lifeSimGame.relationship.RelationshipType;
 
 public record RelationshipDto(
-        Long Id,
+        Long relationshipId,
         RelationshipType relationshipType,
         ActorSummaryDto relatedActor
 ) {

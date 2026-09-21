@@ -24,7 +24,7 @@ public class ActorMapper {
                         .toList();
 
         return new ActorFullDto(
-                actor.getId(),
+                actor.getActorId(),
                 actor.getFirstName(),
                 actor.getLastName(),
                 actor.getAgeInMonths(),

@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Relationship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long relationshipId;
 
     @ManyToOne
     private Actor actor;

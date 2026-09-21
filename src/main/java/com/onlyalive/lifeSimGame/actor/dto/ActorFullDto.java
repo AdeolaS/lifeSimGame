@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public record ActorFullDto(
-        Long id,
+        Long actorId,
         String firstName,
         String lastName,
         int ageInMonths,

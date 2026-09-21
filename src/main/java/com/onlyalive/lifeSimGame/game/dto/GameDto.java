@@ -5,7 +5,7 @@ import com.onlyalive.lifeSimGame.actor.dto.ActorFullDto;
 import java.time.LocalDate;
 
 public record GameDto(
-        Long Id,
+        Long gameId,
         LocalDate currentDateInGame,
         ActorFullDto player
 ) {

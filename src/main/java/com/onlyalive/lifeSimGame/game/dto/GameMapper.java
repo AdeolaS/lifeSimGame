@@ -14,7 +14,7 @@ public class GameMapper {
     public GameDto toDto(Game game) {
 
         return new GameDto(
-                game.getId(),
+                game.getGameId(),
                 game.getCurrentDateInGame(),
                 actorMapper.toDto(game.getPlayer())
         );

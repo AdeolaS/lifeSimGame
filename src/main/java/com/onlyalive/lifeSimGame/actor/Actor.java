@@ -19,7 +19,7 @@ public class Actor {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long actorId;
     
     private String firstName;
     private String lastName;
