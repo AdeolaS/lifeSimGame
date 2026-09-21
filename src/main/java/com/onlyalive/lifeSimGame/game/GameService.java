@@ -51,13 +51,13 @@ public class GameService {
         relationshipService.createRelationship(player, mother, RelationshipType.MOTHER);
         relationshipService.createRelationship(player, father, RelationshipType.FATHER);
 
-        if (player.getGender() == Gender.FEMALE) {
-            relationshipService.createRelationship(mother, player, RelationshipType.DAUGHTER);
-            relationshipService.createRelationship(father, player, RelationshipType.DAUGHTER);
-        } else {
-            relationshipService.createRelationship(mother, player, RelationshipType.SON);
-            relationshipService.createRelationship(father, player, RelationshipType.SON);
-        }
+//        if (player.getGender() == Gender.FEMALE) {
+//            relationshipService.createRelationship(mother, player, RelationshipType.DAUGHTER);
+//            relationshipService.createRelationship(father, player, RelationshipType.DAUGHTER);
+//        } else {
+//            relationshipService.createRelationship(mother, player, RelationshipType.SON);
+//            relationshipService.createRelationship(father, player, RelationshipType.SON);
+//        }
 
         Game game = new Game(LocalDate.now(), player);
         return gameRepository.save(game);
@@ -112,5 +112,11 @@ public class GameService {
         father.setAgeInMonths(29*12);
 
         return List.of(mother,father);
+    }
+
+
+
+    public List<Actor> getAllCharacters() {
+        return actorRepository.findAll();
     }
 }

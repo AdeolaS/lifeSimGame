@@ -13,7 +13,10 @@ public class RelationshipService {
 
         Relationship relationship = new Relationship(actor, relatedActor, type);
         actor.addRelationship(relationship);
-
         relationshipRepository.save(relationship);
+
+        Relationship oppositeRelationship = new Relationship(relatedActor, actor, type.getOpposite(actor.getGender()));
+        relatedActor.addRelationship(oppositeRelationship);
+        relationshipRepository.save(oppositeRelationship);
     }
 }

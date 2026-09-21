@@ -1,5 +1,8 @@
 package com.onlyalive.lifeSimGame.game;
 
+import com.onlyalive.lifeSimGame.actor.Actor;
+import com.onlyalive.lifeSimGame.actor.dto.ActorFullDto;
+import com.onlyalive.lifeSimGame.actor.dto.ActorMapper;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import com.onlyalive.lifeSimGame.game.dto.GameDto;
 import com.onlyalive.lifeSimGame.game.dto.GameMapper;
@@ -7,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController 
@@ -16,6 +22,7 @@ public class GameController {
 
     private final GameService gameService;
     private final GameMapper gameMapper;
+    private final ActorMapper actorMapper;
 
     @PostMapping("/new-game")
     public ResponseEntity<GameDto> createGame(
@@ -32,5 +39,17 @@ public class GameController {
 
         Game game = gameService.ageUp(gameId);
         return ResponseEntity.ok(gameMapper.toDto(game));
+    }
+
+    @GetMapping("/all-actors")
+    public ResponseEntity<List<ActorFullDto>> getAllCharacters() {
+
+        List<Actor> characters = gameService.getAllCharacters();
+        List<ActorFullDto> characterDtos = new ArrayList<>();
+
+        for (Actor character : characters) {
+            characterDtos.add(actorMapper.toDto(character));
+        }
+        return ResponseEntity.ok(characterDtos);
     }
 }
