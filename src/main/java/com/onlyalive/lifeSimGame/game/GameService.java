@@ -1,11 +1,14 @@
 package com.onlyalive.lifeSimGame.game;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Random;
 
 import com.onlyalive.lifeSimGame.actor.ActorRepository;
 import com.onlyalive.lifeSimGame.actor.properties.name.FirstName;
 import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
+import com.onlyalive.lifeSimGame.actor.properties.name.LastName;
 import com.onlyalive.lifeSimGame.actor.properties.name.LastNameRepository;
 import com.onlyalive.lifeSimGame.simulation.SimulationService;
 import org.springframework.stereotype.Service;
@@ -50,9 +53,9 @@ public class GameService {
         }
 
         Actor player = new Actor(firstName, lastName, gender);
-        actorRepository.save(player);
+        List<Actor> parents = generateParents(lastName);
 
-        Game game = new Game(LocalDate.now(), player);
+        Game game = new Game(LocalDate.now(), player, parents.get(0), parents.get(1));
         return gameRepository.save(game);
 
     }
@@ -65,5 +68,26 @@ public class GameService {
         simulationService.advanceMonth(game);
 
         return gameRepository.save(game);
+    }
+
+    private List<Actor> generateParents(String lastName) {
+
+        Actor mother = new Actor(firstNameRepository.findFemaleName().getName(), lastName, Gender.FEMALE);
+        Actor father = new Actor(firstNameRepository.findMaleName().getName(), lastName, Gender.MALE);
+
+        Random random = new Random();
+
+        //Mother's age to be between 18 and 45
+        mother.setAgeInMonths((random.nextInt(45-18)+18) * 25
+                                + random.nextInt(11));
+
+        int fathersAge = mother.getAgeInMonths() + random.nextInt(20+7)-7;
+
+        if (fathersAge < (18*25)) {
+            fathersAge = (18*25);
+        }
+        father.setAgeInMonths(fathersAge);
+
+        return List.of(mother, father);
     }
 }
