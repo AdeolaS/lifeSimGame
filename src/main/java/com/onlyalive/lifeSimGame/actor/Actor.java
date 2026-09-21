@@ -1,5 +1,7 @@
 package com.onlyalive.lifeSimGame.actor;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import com.onlyalive.lifeSimGame.relationship.Relationship;
 import jakarta.persistence.*;
@@ -11,9 +13,7 @@ import java.util.List;
 @Getter 
 @Setter 
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Builder
 @Table(name = "actors")
 public class Actor {
 
@@ -24,25 +24,29 @@ public class Actor {
     private String firstName;
     private String lastName;
 
-    @Builder.Default
     private int ageInMonths = 0;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Builder.Default
     private boolean isAlive = true;
 
-//    @ManyToOne
-//    private Occupation occupation;
-
     @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL)
-    @Builder.Default
     private List<Relationship> relationships = new ArrayList<>();
 
     public Actor(String firstName, String lastName, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+    }
+
+    public void addRelationship(Relationship relationship) {
+        relationships.add(relationship);
+        relationship.setActor(this);
+    }
+
+    public void removeRelationship(Relationship relationship) {
+        relationships.remove(relationship);
+        relationship.setActor(null);
     }
 }

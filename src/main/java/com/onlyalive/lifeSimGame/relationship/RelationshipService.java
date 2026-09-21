@@ -11,8 +11,8 @@ public class RelationshipService {
 
     public void createRelationship(Actor actor, Actor relatedActor, RelationshipType type) {
 
-        Relationship relationship =
-                new Relationship(actor, relatedActor, type);
+        Relationship relationship = new Relationship(actor, relatedActor, type);
+        actor.addRelationship(relationship);
 
         relationshipRepository.save(relationship);
     }

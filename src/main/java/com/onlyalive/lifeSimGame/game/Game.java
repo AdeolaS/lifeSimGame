@@ -36,18 +36,8 @@ public class Game {
     @JoinColumn(name = "player_id")
     private Actor player;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mother_id")
-    private Actor mother;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "father_id")
-    private Actor father;
-
-    public Game(LocalDate currentDateInGame, Actor player, Actor mother, Actor father) {
+    public Game(LocalDate currentDateInGame, Actor player) {
         this.currentDateInGame = currentDateInGame;
         this.player = player;
-        this.mother = mother;
-        this.father = father;
     }
 }

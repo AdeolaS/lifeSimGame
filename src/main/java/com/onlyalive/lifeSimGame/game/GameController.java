@@ -13,18 +13,22 @@ import lombok.RequiredArgsConstructor;
 public class GameController {
 
     private final GameService gameService;
+    private final GameMapper gameMapper;
 
     @PostMapping("/new-game")
-    public ResponseEntity<Game> createGame(
+    public ResponseEntity<GameDto> createGame(
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) Gender gender
     ) {
-        return ResponseEntity.ok(gameService.createGame(firstName, lastName, gender));
+        Game game = gameService.createGame(firstName, lastName, gender);
+        return ResponseEntity.ok(gameMapper.toDto(game));
     }
 
     @PutMapping("/{gameId}/age-up")
     public ResponseEntity<Game> advanceMonth(@PathVariable Long gameId) {
-        return ResponseEntity.ok(gameService.ageUp(gameId));
+
+        Game game = gameService.ageUp(gameId);
+        return ResponseEntity.ok(game);
     }
 }
