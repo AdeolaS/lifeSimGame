@@ -1,9 +1,9 @@
-package com.onlyalive.lifeSimGame.actor;
+package com.onlyalive.lifeSimGame.actor.dto;
 
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 
 
-public record ActorDto(
+public record ActorSummaryDto(
         Long id,
         String firstName,
         String lastName,

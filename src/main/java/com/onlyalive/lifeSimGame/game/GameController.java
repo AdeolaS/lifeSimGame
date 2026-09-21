@@ -1,6 +1,8 @@
 package com.onlyalive.lifeSimGame.game;
 
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
+import com.onlyalive.lifeSimGame.game.dto.GameDto;
+import com.onlyalive.lifeSimGame.game.dto.GameMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +28,9 @@ public class GameController {
     }
 
     @PutMapping("/{gameId}/age-up")
-    public ResponseEntity<Game> advanceMonth(@PathVariable Long gameId) {
+    public ResponseEntity<GameDto> advanceMonth(@PathVariable Long gameId) {
 
         Game game = gameService.ageUp(gameId);
-        return ResponseEntity.ok(game);
+        return ResponseEntity.ok(gameMapper.toDto(game));
     }
 }

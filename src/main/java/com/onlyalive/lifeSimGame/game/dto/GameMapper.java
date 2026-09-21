@@ -1,6 +1,7 @@
-package com.onlyalive.lifeSimGame.game;
+package com.onlyalive.lifeSimGame.game.dto;
 
-import com.onlyalive.lifeSimGame.actor.ActorMapper;
+import com.onlyalive.lifeSimGame.actor.dto.ActorMapper;
+import com.onlyalive.lifeSimGame.game.Game;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
