@@ -23,12 +23,12 @@ public class Relationship {
     private Actor relatedActor;
 
     @Enumerated(EnumType.STRING)
-    private RelationshipType relationshipType;
+    private RelationshipStatus relationshipStatus;
 
-    public Relationship(Actor actor, Actor relatedActor, RelationshipType relationshipType) {
+    public Relationship(Actor actor, Actor relatedActor, RelationshipStatus relationshipStatus) {
 
         this.actor = actor;
         this.relatedActor = relatedActor;
-        this.relationshipType = relationshipType;
+        this.relationshipStatus = relationshipStatus;
     }
 }

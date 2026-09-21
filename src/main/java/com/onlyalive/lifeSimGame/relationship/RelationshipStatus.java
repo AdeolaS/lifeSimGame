@@ -2,7 +2,7 @@ package com.onlyalive.lifeSimGame.relationship;
 
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 
-public enum RelationshipType {
+public enum RelationshipStatus {
     MOTHER,
     FATHER,
     DAUGHTER,
@@ -29,9 +29,10 @@ public enum RelationshipType {
     EX_HUSBAND,
     EX_WIFE,
     FRIEND,
-    BEST_FRIEND;
+    BEST_FRIEND,
+    STRANGER;
 
-    public RelationshipType getOpposite(Gender gender) {
+    public RelationshipStatus getOpposite(Gender gender) {
         return switch (this) {
 
             case MOTHER, FATHER -> gender == Gender.FEMALE ? DAUGHTER : SON;
@@ -64,7 +65,7 @@ public enum RelationshipType {
 
             case BEST_FRIEND -> BEST_FRIEND;
 
-            default -> FRIEND;
+            default -> STRANGER;
         };
     }
 }

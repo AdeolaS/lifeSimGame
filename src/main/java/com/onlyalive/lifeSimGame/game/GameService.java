@@ -8,12 +8,9 @@ import com.onlyalive.lifeSimGame.actor.ActorRepository;
 import com.onlyalive.lifeSimGame.actor.properties.name.FirstName;
 import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
-import com.onlyalive.lifeSimGame.actor.properties.name.LastName;
 import com.onlyalive.lifeSimGame.actor.properties.name.LastNameRepository;
-import com.onlyalive.lifeSimGame.actor.properties.occupation.JobTitle;
-import com.onlyalive.lifeSimGame.actor.properties.occupation.Occupation;
 import com.onlyalive.lifeSimGame.relationship.RelationshipService;
-import com.onlyalive.lifeSimGame.relationship.RelationshipType;
+import com.onlyalive.lifeSimGame.relationship.RelationshipStatus;
 import com.onlyalive.lifeSimGame.simulation.SimulationService;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +26,12 @@ public class GameService {
     private final GameRepository gameRepository;
     private final FirstNameRepository firstNameRepository;
     private  final LastNameRepository lastNameRepository;
+    private final ActorRepository actorRepository;
+
     private final SimulationService simulationService;
     private final RelationshipService relationshipService;
 
     private final double MALE_BABY_CHANCE = 0.5;
-    private final ActorRepository actorRepository;
 
     @Transactional
     public Game createGame(String firstName, String lastName, Gender gender) {
@@ -48,16 +46,10 @@ public class GameService {
         actorRepository.save(mother);
         actorRepository.save(father);
 
-        relationshipService.createRelationship(player, mother, RelationshipType.MOTHER);
-        relationshipService.createRelationship(player, father, RelationshipType.FATHER);
+        relationshipService.createRelationship(player, mother, RelationshipStatus.MOTHER);
+        relationshipService.createRelationship(player, father, RelationshipStatus.FATHER);
 
-//        if (player.getGender() == Gender.FEMALE) {
-//            relationshipService.createRelationship(mother, player, RelationshipType.DAUGHTER);
-//            relationshipService.createRelationship(father, player, RelationshipType.DAUGHTER);
-//        } else {
-//            relationshipService.createRelationship(mother, player, RelationshipType.SON);
-//            relationshipService.createRelationship(father, player, RelationshipType.SON);
-//        }
+        relationshipService.generateParentRelationship(mother, father);
 
         Game game = new Game(LocalDate.now(), player);
         return gameRepository.save(game);
@@ -114,6 +106,10 @@ public class GameService {
         return List.of(mother,father);
     }
 
+    public void deleteAllGamesAndActors() {
+        actorRepository.deleteAll();
+        gameRepository.deleteAll();
+    }
 
 
     public List<Actor> getAllCharacters() {

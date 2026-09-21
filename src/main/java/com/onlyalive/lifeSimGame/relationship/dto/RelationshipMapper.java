@@ -28,7 +28,7 @@ public class RelationshipMapper {
 
         return new RelationshipDto(
                 relationship.getRelationshipId(),
-                relationship.getRelationshipType(),
+                relationship.getRelationshipStatus(),
                 relatedActorDto
         );
     }
