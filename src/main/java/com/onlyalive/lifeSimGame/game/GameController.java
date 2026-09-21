@@ -19,7 +19,7 @@ public class GameController {
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) Gender gender
-            ) {
+    ) {
         return ResponseEntity.ok(gameService.createGame(firstName, lastName, gender));
     }
 
@@ -27,9 +27,4 @@ public class GameController {
     public ResponseEntity<Game> advanceMonth(@PathVariable Long gameId) {
         return ResponseEntity.ok(gameService.ageUp(gameId));
     }
-
-//    @DeleteMapping("/{gameId}/delete-game")
-//    public ResponseEntity<Void> deleteGame(@PathVariable Long gameId) {
-//        return ResponseEntity.ok().build();
-//    }
 }

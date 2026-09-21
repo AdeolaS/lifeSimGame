@@ -10,6 +10,8 @@ import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import com.onlyalive.lifeSimGame.actor.properties.name.LastName;
 import com.onlyalive.lifeSimGame.actor.properties.name.LastNameRepository;
+import com.onlyalive.lifeSimGame.actor.properties.occupation.JobTitle;
+import com.onlyalive.lifeSimGame.actor.properties.occupation.Occupation;
 import com.onlyalive.lifeSimGame.relationship.RelationshipService;
 import com.onlyalive.lifeSimGame.relationship.RelationshipType;
 import com.onlyalive.lifeSimGame.simulation.SimulationService;
