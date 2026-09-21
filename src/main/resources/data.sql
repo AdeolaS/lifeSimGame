@@ -19,3 +19,22 @@ INSERT INTO first_names (name, is_male_name, is_female_name) VALUES
 ('Charlie', true, true),
 ('Quinn', true, true),
 ('Rowan', true, true);
+
+INSERT INTO last_names (name) VALUES
+('Smith'),
+('Bartley'),
+('Adebayo'),
+('Reid'),
+('Line'),
+('Opoku'),
+('Luck'),
+('Stackhouse'),
+('Latimer'),
+('Stonestreet'),
+('Parker'),
+('Srikanth'),
+('Pelliciari'),
+('Freeman'),
+('Filippin'),
+('Lazarova'),
+('Photiou');
