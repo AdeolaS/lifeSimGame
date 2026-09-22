@@ -29,6 +29,8 @@ public class ActorMapper {
                 actor.getLastName(),
                 actor.getAgeInMonths(),
                 actor.getGender(),
+                actor.getSocialClass(),
+                actor.getEducationLevel(),
                 actor.isAlive(),
                 relationships
         );

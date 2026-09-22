@@ -23,6 +23,8 @@ public class RelationshipMapper {
                         relatedActor.getLastName(),
                         relatedActor.getAgeInMonths(),
                         relatedActor.getGender(),
+                        relatedActor.getSocialClass(),
+                        relatedActor.getEducationLevel(),
                         relatedActor.isAlive()
                 );
 

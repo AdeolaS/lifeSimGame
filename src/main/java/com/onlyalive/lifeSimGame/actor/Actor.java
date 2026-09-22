@@ -21,6 +21,8 @@ public class Actor {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long actorId;
+
+    private boolean isPlayer = false;
     
     private String firstName;
     private String lastName;
@@ -45,6 +47,16 @@ public class Actor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+    }
+
+    public Actor(String firstName, String lastName, int ageInMonths, Gender gender,
+                 SocialClass socialClass, EducationLevel educationLevel) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ageInMonths = ageInMonths;
+        this.gender = gender;
+        this.socialClass = socialClass;
+        this.educationLevel = educationLevel;
     }
 
     public void addRelationship(Relationship relationship) {
