@@ -16,10 +16,13 @@ public class Occupation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long occupationId;
 
+    @Column(name = "job_title")
     private String jobTitle;
 
+    @Column(name = "monthly_wage")
     private double monthlyWage;
 
+    @Column(name = "is_legal")
     private boolean isLegal;
 /**
     0   = virtually no social prestige
@@ -38,11 +41,14 @@ public class Occupation {
  **/
     private int danger;
 
+    @Column(name = "minimum_age_in_months")
     private int minimumAgeInMonths;
 
+    @Column(name = "minimum_social_class")
     @Enumerated(EnumType.STRING)
     private SocialClass minimumSocialClass;
 
+    @Column(name = "required_education")
     @Enumerated(EnumType.STRING)
     private EducationLevel requiredEducation;
 
