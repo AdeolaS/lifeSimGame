@@ -8,6 +8,8 @@ import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.name.LastName;
 import com.onlyalive.lifeSimGame.actor.properties.name.LastNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.occupation.EducationLevel;
+import com.onlyalive.lifeSimGame.actor.properties.occupation.Occupation;
+import com.onlyalive.lifeSimGame.actor.properties.occupation.OccupationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class ActorGenerator {
 
     private final FirstNameRepository firstNameRepository;
     private final LastNameRepository lastNameRepository;
+    private final OccupationRepository occupationRepository;
 
     private static final Random random = new Random();
     private static int roll;
@@ -81,6 +84,12 @@ public class ActorGenerator {
                 Gender.MALE,
                 socialClass,
                 generateEducationLevel(socialClass));
+
+        Occupation jobMother = generateJob(mother.getAgeInMonths(), socialClass, mother.getEducationLevel());
+        Occupation jobFather = generateJob(father.getAgeInMonths(), socialClass, father.getEducationLevel());
+
+        mother.setOccupation(jobMother);
+        father.setOccupation(jobFather);
 
         return List.of(mother,father);
     }
@@ -209,4 +218,18 @@ public class ActorGenerator {
         return EducationLevel.NONE;
     }
 
+    private Occupation generateJob(int ageInMonths, SocialClass socialClass, EducationLevel educationLevel) {
+
+        List<Occupation> availableJobs = occupationRepository.findAll()
+                .stream()
+                .filter(job -> job.getMinimumAgeInMonths() <= ageInMonths)
+                .filter(job -> job.getMinimumSocialClass().getLevel() <= socialClass.getLevel())
+                .filter(job -> job.getRequiredEducation().getLevel() <= educationLevel.getLevel())
+                .toList();
+
+        if (availableJobs.isEmpty()) {
+            return null;
+        }
+        return availableJobs.get(new Random().nextInt(availableJobs.size()));
+    }
 }

@@ -1,5 +1,8 @@
 package com.onlyalive.lifeSimGame.actor.properties.occupation;
 
+import lombok.Getter;
+
+@Getter
 public enum EducationLevel {
     NONE(0),
     BASIC(1),
@@ -10,10 +13,7 @@ public enum EducationLevel {
     private final int level;
 
     EducationLevel(int level) {
-        this.level = level;
-    }
 
-    public int getLevel() {
-        return level;
+        this.level = level;
     }
 }

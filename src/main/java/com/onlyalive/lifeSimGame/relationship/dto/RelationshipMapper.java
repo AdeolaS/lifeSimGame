@@ -25,6 +25,7 @@ public class RelationshipMapper {
                         relatedActor.getGender(),
                         relatedActor.getSocialClass(),
                         relatedActor.getEducationLevel(),
+                        relatedActor.getOccupation(),
                         relatedActor.isAlive()
                 );
 

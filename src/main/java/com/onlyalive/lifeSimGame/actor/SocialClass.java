@@ -1,5 +1,8 @@
 package com.onlyalive.lifeSimGame.actor;
 
+import lombok.Getter;
+
+@Getter
 public enum SocialClass {
     PEASANT(0),
     COMMONER(1),
@@ -10,10 +13,7 @@ public enum SocialClass {
     private final int level;
 
     SocialClass(int level) {
-        this.level = level;
-    }
 
-    public int getSocialClass() {
-        return level;
+        this.level = level;
     }
 }
