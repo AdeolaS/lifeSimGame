@@ -59,6 +59,7 @@ public class ActorGenerator {
         Actor player = new Actor(firstName, lastName, gender);
         player.setPlayer(true);
         player.setSocialClass(socialClass);
+        player.setOccupation(generateJob(0, socialClass, EducationLevel.NONE));
 
         return player;
     }
@@ -220,6 +221,7 @@ public class ActorGenerator {
 
     private Occupation generateJob(int ageInMonths, SocialClass socialClass, EducationLevel educationLevel) {
 
+        // Find all available jobs
         List<Occupation> availableJobs = occupationRepository.findAll()
                 .stream()
                 .filter(job -> job.getMinimumAgeInMonths() <= ageInMonths)
@@ -229,6 +231,19 @@ public class ActorGenerator {
 
         if (availableJobs.isEmpty()) {
             return null;
+        }
+
+        // Royals will only have royal jobs
+        if (socialClass == SocialClass.ROYALTY) {
+            availableJobs = availableJobs.stream()
+                    .filter(job -> job.getMinimumSocialClass() == SocialClass.ROYALTY)
+                    .toList();
+        }
+        //Nobles will only have noble jobs
+        if (socialClass == SocialClass.NOBLE) {
+            availableJobs = availableJobs.stream()
+                    .filter(job -> job.getMinimumSocialClass() == SocialClass.NOBLE)
+                    .toList();
         }
         return availableJobs.get(new Random().nextInt(availableJobs.size()));
     }

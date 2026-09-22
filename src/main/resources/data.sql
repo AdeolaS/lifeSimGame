@@ -797,8 +797,8 @@ VALUES
 -- ROYALTY
 -- ============================================================
 
-('Prince', 600.0, true, 100, 35, 216, 'ROYALTY', 'LITERATE'),
-('Princess', 600.0, true, 100, 30, 216, 'ROYALTY', 'LITERATE'),
+('Prince', 600.0, true, 100, 35, 216, 'ROYALTY', 'NONE'),
+('Princess', 600.0, true, 100, 30, 216, 'ROYALTY', 'NONE'),
 ('Duke', 550.0, true, 100, 30, 300, 'NOBLE', 'LITERATE'),
 ('Duchess', 550.0, true, 100, 25, 300, 'NOBLE', 'LITERATE'),
 ('King', 1000.0, true, 100, 50, 360, 'ROYALTY', 'SCHOLARLY'),
