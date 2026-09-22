@@ -10,6 +10,7 @@ import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import com.onlyalive.lifeSimGame.relationship.RelationshipService;
 import com.onlyalive.lifeSimGame.relationship.RelationshipStatus;
+import com.onlyalive.lifeSimGame.relationship.RelationshipType;
 import com.onlyalive.lifeSimGame.simulation.SimulationService;
 import org.springframework.stereotype.Service;
 
@@ -48,9 +49,9 @@ public class GameService {
         Random random = new Random();
 
         relationshipService.createRelationship(
-                player, mother, RelationshipStatus.MOTHER, (random.nextInt(60)+40));
+                player, mother, RelationshipStatus.MOTHER, RelationshipType.FAMILIAL, (random.nextInt(60)+40));
         relationshipService.createRelationship(
-                player, father, RelationshipStatus.FATHER, (random.nextInt(60)+40));
+                player, father, RelationshipStatus.FATHER, RelationshipType.FAMILIAL, (random.nextInt(60)+40));
 
         relationshipService.generateParentRelationship(mother, father);
 

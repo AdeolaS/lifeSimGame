@@ -18,10 +18,10 @@ public enum RelationshipStatus {
     NIECE,
     NEPHEW,
     COUSIN,
-    GIRLFRIEND,
-    BOYFRIEND,
-    EX_GIRLFRIEND,
-    EX_BOYFRIEND,
+    CRUSH,
+    LOVER,
+    EX_CRUSH,
+    EX_LOVER,
     FIANCE,
     EX_FIANCE,
     HUSBAND,
@@ -49,9 +49,13 @@ public enum RelationshipStatus {
 
             case COUSIN -> COUSIN;
 
-            case GIRLFRIEND, BOYFRIEND -> gender == Gender.FEMALE ? GIRLFRIEND : BOYFRIEND;
+            case CRUSH -> CRUSH;
 
-            case EX_GIRLFRIEND, EX_BOYFRIEND -> gender == Gender.FEMALE ? EX_GIRLFRIEND : EX_BOYFRIEND;
+            case EX_CRUSH -> EX_CRUSH;
+
+            case LOVER -> LOVER;
+
+            case EX_LOVER -> EX_LOVER;
 
             case FIANCE -> FIANCE;
 

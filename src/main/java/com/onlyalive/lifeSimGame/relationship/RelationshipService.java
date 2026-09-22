@@ -12,13 +12,15 @@ import java.util.Random;
 public class RelationshipService {
     private final RelationshipRepository relationshipRepository;
 
-    public void createRelationship(Actor actor, Actor relatedActor, RelationshipStatus status, int relationshipRating) {
+    public void createRelationship(Actor actor, Actor relatedActor, RelationshipStatus status,
+                                   RelationshipType relationshipType, int relationshipRating) {
 
-        Relationship relationship = new Relationship(actor, relatedActor, status, relationshipRating);
+        Relationship relationship = new Relationship(actor, relatedActor, status, relationshipType, relationshipRating);
         actor.addRelationship(relationship);
         relationshipRepository.save(relationship);
 
-        Relationship oppositeRelationship = new Relationship(relatedActor, actor, status.getOpposite(actor.getGender()), relationshipRating);
+        Relationship oppositeRelationship = new Relationship(relatedActor, actor, status.getOpposite(actor.getGender()),
+                relationshipType, relationshipRating);
         relatedActor.addRelationship(oppositeRelationship);
         relationshipRepository.save(oppositeRelationship);
     }
@@ -31,25 +33,25 @@ public class RelationshipService {
 
         if (roll < 50) {
             // 50%
-            createRelationship(father, mother, RelationshipStatus.WIFE, (random.nextInt(60)+40));
+            createRelationship(father, mother, RelationshipStatus.WIFE, RelationshipType.ROMANTIC, (random.nextInt(60)+40));
         } else if (roll < 75) {
             // 25%
-            createRelationship(father, mother, RelationshipStatus.FIANCE, (random.nextInt(60)+40));
+            createRelationship(father, mother, RelationshipStatus.FIANCE, RelationshipType.ROMANTIC, (random.nextInt(60)+40));
         } else if (roll < 92) {
             // 17%
-            createRelationship(father, mother, RelationshipStatus.GIRLFRIEND, (random.nextInt(60)+40));
+            createRelationship(father, mother, RelationshipStatus.LOVER, RelationshipType.ROMANTIC, (random.nextInt(60)+40));
         } else if (roll < 94) {
             // 2%
-            createRelationship(father, mother, RelationshipStatus.EX_WIFE, (random.nextInt(160)-80));
+            createRelationship(father, mother, RelationshipStatus.EX_WIFE, RelationshipType.ROMANTIC, (random.nextInt(160)-80));
         } else if (roll < 96) {
             // 2%
-            createRelationship(father, mother, RelationshipStatus.EX_FIANCE, (random.nextInt(160)-80));
+            createRelationship(father, mother, RelationshipStatus.EX_FIANCE, RelationshipType.ROMANTIC, (random.nextInt(160)-80));
         } else if (roll < 98) {
             // 2%
-            createRelationship(father, mother, RelationshipStatus.EX_GIRLFRIEND, (random.nextInt(160)-80));
+            createRelationship(father, mother, RelationshipStatus.EX_LOVER, RelationshipType.ROMANTIC, (random.nextInt(160)-80));
         } else {
             // 2%
-            createRelationship(father, mother, RelationshipStatus.STRANGER, (random.nextInt(50)-25));
+            createRelationship(father, mother, RelationshipStatus.STRANGER, RelationshipType.ROMANTIC, (random.nextInt(50)-25));
         }
     }
 

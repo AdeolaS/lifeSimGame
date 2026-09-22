@@ -25,17 +25,22 @@ public class Relationship {
     @Enumerated(EnumType.STRING)
     private RelationshipStatus relationshipStatus;
 
+    @Enumerated(EnumType.STRING)
+    private RelationshipType relationshipType;
+
     private int relationshipRating = 0;
 
     public Relationship(
             Actor actor,
             Actor relatedActor,
             RelationshipStatus relationshipStatus,
+            RelationshipType relationshipType,
             int relationshipRating) {
 
         this.actor = actor;
         this.relatedActor = relatedActor;
         this.relationshipStatus = relationshipStatus;
+        this.relationshipType = relationshipType;
         this.relationshipRating = relationshipRating;
     }
 }
