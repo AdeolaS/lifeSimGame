@@ -6,7 +6,6 @@ import java.util.Random;
 
 import com.onlyalive.lifeSimGame.actor.ActorRepository;
 import com.onlyalive.lifeSimGame.actor.dto.ActorGenerator;
-import com.onlyalive.lifeSimGame.actor.properties.name.FirstNameRepository;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
 import com.onlyalive.lifeSimGame.relationship.RelationshipService;
 import com.onlyalive.lifeSimGame.relationship.RelationshipStatus;
@@ -24,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class GameService {
 
     private final GameRepository gameRepository;
-    private final FirstNameRepository firstNameRepository;
     private final ActorRepository actorRepository;
     private final ActorGenerator actorGenerator;
 
@@ -55,7 +53,7 @@ public class GameService {
 
         relationshipService.generateParentRelationship(mother, father);
 
-        Game game = new Game(LocalDate.now(), player);
+        Game game = new Game(LocalDate.now().minusYears(500), player);
         return gameRepository.save(game);
     }
 
