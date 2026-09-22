@@ -110,11 +110,11 @@ public class GameService {
         return List.of(mother,father);
     }
 
+    @Transactional
     public void deleteAllGamesAndActors() {
         actorRepository.deleteAll();
         gameRepository.deleteAll();
     }
-
 
     public List<Actor> getAllCharacters() {
         return actorRepository.findAll();

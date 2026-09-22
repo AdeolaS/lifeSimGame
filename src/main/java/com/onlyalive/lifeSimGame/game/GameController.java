@@ -27,7 +27,6 @@ public class GameController {
     private final ActorMapper actorMapper;
     private final RelationshipService relationshipService;
 
-    @Transactional
     @PostMapping("/new-game")
     public ResponseEntity<GameDto> createGame(
             @RequestParam(required = false) String firstName,

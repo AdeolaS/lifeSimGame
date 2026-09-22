@@ -3,6 +3,7 @@ package com.onlyalive.lifeSimGame.relationship;
 import com.onlyalive.lifeSimGame.actor.Actor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
 
@@ -52,6 +53,7 @@ public class RelationshipService {
         }
     }
 
+    @Transactional
     public void deleteAllRelationships() {
         relationshipRepository.deleteAll();
     }
