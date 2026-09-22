@@ -16,4 +16,8 @@ public class LastName {
     private Long id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "surname_type")
+    private SurnameType surnameType;
 }

@@ -3,6 +3,7 @@ package com.onlyalive.lifeSimGame.actor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.onlyalive.lifeSimGame.actor.properties.Gender;
+import com.onlyalive.lifeSimGame.actor.properties.occupation.EducationLevel;
 import com.onlyalive.lifeSimGame.relationship.Relationship;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,6 +29,12 @@ public class Actor {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    private SocialClass socialClass;
+
+    @Enumerated(EnumType.STRING)
+    private EducationLevel educationLevel = EducationLevel.NONE;
 
     private boolean isAlive = true;
 
