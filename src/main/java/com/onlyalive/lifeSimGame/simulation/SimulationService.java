@@ -17,7 +17,7 @@ public class SimulationService {
     private final ActorRepository actorRepository;
     private final RelationshipRepository relationshipRepository;
 
-    public void advanceMonth(Game game) {
+    public void advanceTime(Game game) {
 
         int timeJump = 1;
 
